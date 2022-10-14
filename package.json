@@ -1,0 +1,28 @@
+{
+  "name": "newrestapi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon -r esm server.js",
+    "start": "node -r esm  server.js"
+  },
+  "keywords": [],
+  "type": "module",
+  "author": "ashish",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "body-parser": "^1.20.1",
+    "dotenv": "^16.0.3",
+    "esm": "^3.2.25",
+    "express": "^4.18.1",
+    "joi": "^17.6.2",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.6.5",
+    "multer": "^1.4.5-lts.1"
+  },
+  "devDependencies": {
+    "es-module-loader": "^2.3.0"
+  }
+}
