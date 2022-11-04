@@ -1,8 +1,8 @@
 import dotenv from 'dotenv'
 dotenv.config()
 export const {
-    PORT,
-    Debug_Mode,
+    APP_PORT,
+    DEBUG_MODE,
     DB_URL,
     JWT_SECRET,
     REFRESH_SECRET,

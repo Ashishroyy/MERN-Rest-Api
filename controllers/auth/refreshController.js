@@ -33,15 +33,15 @@ const refreshController = {
                 const { _id } = await JwtServices.verify(refreshtoken.token, REFRESH_SECRET);
                 userId = _id;
             } catch (err) {
-                return next(CustomErrorHandler.unAthorized('Invalid refresh token'))
+                return next(CustomErrorHandler.unAthorized('Invalid refresh token'));
             }
 
-            const user = await User.findOne({ _id: userId })
+            const user = await User.findOne({ _id: userId });
             if (!user) {
                 return next(CustomErrorHandler.unAthorized('user not found'))
             }
             //token
-            const access_token = JwtServices.sign({ _id: user._id, role: user.role })
+            const access_token = JwtServices.sign({ _id: user._id, role: user.role });
 
             const refresh_token = JwtServices.sign({ _id: user._id, role: user.role }, '1y', REFRESH_SECRET);
 
@@ -55,6 +55,6 @@ const refreshController = {
         }
 
     }
-}
+};
 
 export default refreshController;

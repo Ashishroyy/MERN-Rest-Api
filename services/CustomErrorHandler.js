@@ -10,7 +10,7 @@ class CustomErrorHandler extends Error{
     static wrongCredentials(message = 'username or password is incorrect'){
         return new CustomErrorHandler(401, message);
     }
-    static unAthorized(message = "unAthorized"){
+    static unAuthorized(message = "unAuthorized"){
         return new CustomErrorHandler(401, message);
     }
     static notFound(message = "404 not found"){

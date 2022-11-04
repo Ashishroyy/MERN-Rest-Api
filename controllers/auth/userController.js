@@ -8,7 +8,7 @@ const userController ={
         const user = await User.findOne({_id: req.user._id}).select('-password -updatedAt -__v')
 
             if(!user){
-                return next(CustomErrorHandler.notFound())
+                return next(CustomErrorHandler.notFound());
             }
             res.json(user)
         }catch(err){

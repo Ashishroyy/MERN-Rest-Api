@@ -1,6 +1,6 @@
 import Joi from "joi";
 import User from "../../models/User.js";
-import RefreshToken from "../../models/refreshTokens.js";
+import refreshToken from "../../models/refreshTokens.js";
 import CustomErrorHandler from "../../services/CustomerrorHandler.js";
 import bcrypt from 'bcrypt'
 import JwtServices from "../../services/JwtServices.js";
@@ -39,7 +39,7 @@ const loginController = {
            const refresh_token = JwtServices.sign({_id: user._id , role: user.role}, '1y' ,REFRESH_SECRET);
 
         //database whitelist
-            await RefreshToken.create({token: refresh_token});
+            await refreshToken.create({token: refresh_token});
 
            res.json({access_token, refresh_token})
         }catch(err){
@@ -59,12 +59,12 @@ const loginController = {
         }
 
         try{
-            await RefreshToken.deleteOne({token: req.body.refresh_token})
+            await refreshToken.deleteOne({token: req.body.refresh_token})
         }catch(err){
             return next(new Error('something went wronge in datdabase'));
         }
-        res.json({status: 1})
+        res.json({status: 1});
      }
-}
+};
 
 export default loginController;

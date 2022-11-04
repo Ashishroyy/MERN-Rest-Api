@@ -5,22 +5,22 @@ const auth = async (req, res , next) =>{
     let authHeader = req.headers.authorization;
 
     if(!authHeader){
-       return next(CustomErrorHandler.unAthorized())
+       return next(CustomErrorHandler.unAuthorized())
     }
 
     const token =  authHeader.split(' ')[1];
     try{
-     const {_id, role} =  await JwtServices.verify(token)
+     const {_id, role} = await JwtServices.verify(token);
         const user = {
             _id,
             role
         }
         req.user = user;
-        next()
+        next();
 
 
     }catch(err){
-       return next(CustomErrorHandler.unAthorized())
+       return next(CustomErrorHandler.unAuthorized())
     }
 }
 

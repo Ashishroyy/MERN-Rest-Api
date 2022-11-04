@@ -2,13 +2,12 @@ import Joi from "joi";
 import bcrypt from 'bcrypt';
 import User from '../../models/User.js';
 import refreshTokens from "../../models/refreshTokens.js";
-import JwtServices from "../../services/JwtServices.js";
+// import JwtServices from "../../services/JwtServices.js";
 import CustomErrorHandler from "../../services/CustomErrorHandler.js";
 import { REFRESH_SECRET } from "../../config/index.js";
+import JwtServices from "../../services/JwtServices.js";
 
-const registerController = {
-    async register(req, res, next) {
-
+const registerController = async (req, res, next)=> {
         const registerSchema = Joi.object({
             name: Joi.string().min(3).max(30).required(),
             email: Joi.string().email().required(),
@@ -58,7 +57,7 @@ const registerController = {
             return next(err);
         }
         res.json({ access_token, refresh_token });
-    }
-};
+     }
+
 
 export default registerController;
